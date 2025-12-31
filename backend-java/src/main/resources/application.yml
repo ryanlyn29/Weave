@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: weave-backend
+  datasource:
+    url: ${DB_URL:jdbc:h2:mem:weave;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+  jpa:
+    hibernate:
+      # Use 'create' to drop and recreate schema on startup, 'update' for incremental updates
+      # Can be overridden with: SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:create}
+    defer-datasource-initialization: false
+    properties:
+      hibernate:
+        dialect: ${DB_DIALECT:org.hibernate.dialect.H2Dialect}
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+          lob:
+            non_contextual_creation: true
+    show-sql: false
+  flyway:
+    # Disabled by default - use Flyway migrations in production instead of Hibernate DDL auto
+    enabled: ${FLYWAY_ENABLED:false}
+
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: always
+    include-binding-errors: always
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui
+    enabled: true
+    use-root-path: true
+
+logging:
+  level:
+    com.weave: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+

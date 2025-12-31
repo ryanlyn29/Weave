@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 8px spacing system - use multiples of 8px (0.5rem) for spacing */
+/* This ensures consistent spacing throughout the app */
+
+@layer utilities {
+  .hairline-t {
+    border-top-width: 0.5px;
+  }
+  .hairline-b {
+    border-bottom-width: 0.5px;
+  }
+  .hairline-l {
+    border-left-width: 0.5px;
+  }
+  .hairline-r {
+    border-right-width: 0.5px;
+  }
+}
+
+/* Ensure no shadows or gradients are applied - calm, clean design */
+* {
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+/* Soft borders - use border-gray-200 or border-gray-100 */
+/* Focus states without shadows */
+*:focus-visible {
+  outline: 1px solid #6366f1;
+  outline-offset: 1px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
