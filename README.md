@@ -5,7 +5,7 @@ A production-grade, consumer-facing web app for high-trust groups to have conver
 ## Architecture
 
 - **Frontend**: Next.js 14 (App Router), React, TypeScript, Tailwind CSS
-- **Backend**: Java 21, Spring Boot 3, PostgreSQL, Flyway
+- **Backend**: Java 21, Spring Boot 4.0.1, PostgreSQL, Flyway
 - **Authentication**: NextAuth.js + Firebase
 - **Real-time**: Server-Sent Events (SSE) for thread updates
 
